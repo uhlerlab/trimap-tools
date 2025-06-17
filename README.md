@@ -42,3 +42,6 @@ For step-by-step guides on how to use **themap-tools**, including training HLA/p
 
 - **Discovery of disease-associated epitopes**  
   Identifies novel peptides potentially involved in disease by integrating small-scale disease-specific data with large-scale public datasets.
+
+## Citation
+If you use **themap-tools** in your research, please cite the following paper:
