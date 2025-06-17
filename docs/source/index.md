@@ -26,10 +26,10 @@
 
 ## 📁 Sections
 
-- 🧰 **Tutorials**  
+- **Tutorials**  
   Step-by-step guides for training HLA/peptide encoders and predicting TCR specificity using example or custom data.
 
-- 🧪 **Discover Disease-Associated Epitopes**  
+- **Discover Disease-Associated Epitopes**  
   Learn how to integrate small-scale experimental data with large public datasets to uncover novel epitope–TCR interactions relevant to specific diseases.
 
 
@@ -42,10 +42,6 @@ For installation instructions, pretrained models, or benchmarking datasets, refe
     <img src="https://mapmyvisitors.com/map.png?d=Yyk7gzaOQndqLUKtJ_tf-WiyCHTadg_nHYdA0CSOFtI&cl=ffffff" />
   </a>
 </p>
-
-
-
-
 
 
 
