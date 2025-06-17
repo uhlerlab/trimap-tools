@@ -11,7 +11,7 @@
 # themap-tools: discovering TCR-HLA-Epitope interactions
 
 <p align="center">
-  <img src="docs/source/_static/diagram.png" alt="applications" width="100"/>
+  <img src="docs/source/_static/diagram.png" alt="applications" width="1200"/>
 </p>
 
 **themap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response. 
