@@ -4,7 +4,7 @@
 
 # themap-tools: discovering TCR-HLA-Epitope interactions
 <p align="center">
-  <img src="docs/source/_static/fig1.png" alt="模型结果图" width="1000"/>
+  <img src="docs/source/_static/diagram.png" alt="模型结果图" width="1200"/>
 </p>
 =======
 # themap-tools
