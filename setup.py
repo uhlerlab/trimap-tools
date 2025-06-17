@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="themap-tools",
-    version="0.1.5",
+    version="1.0.0",
     packages=find_packages(),
     python_requires=">=3.9",
     install_requires=[
