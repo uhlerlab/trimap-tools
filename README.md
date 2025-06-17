@@ -4,10 +4,14 @@
 
 # themap-tools: discovering TCR-HLA-Epitope interactions
 <p align="center">
+  <img src="docs/source/_static/logo.png" alt="模型结果图" width="300"/>
+</p>
+
+<p align="center">
   <img src="docs/source/_static/diagram.png" alt="模型结果图" width="1200"/>
 </p>
 
-**themap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.
+**themap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response. 
 
 ## Installation
 **themap-tools** requires **Python 3.9** or later. It is available on PyPI and can be installed using pip:
@@ -18,6 +22,9 @@ or by cloning the repository and installing it manually:
 ```bash
 pip install git+https://github.com/uhlerlab/themap-tools.git@main
 ```
+
+## Tutorials
+For step-by-step guides on how to use **themap-tools**, including training HLA/peptide encoders and predicting TCR specificity, please refer to the [Documentation](https://themap-tools.readthedocs.io/) section.
 
 ## Key Features
 
