@@ -8,7 +8,7 @@
 [![Downloads](https://static.pepy.tech/badge/your-package-name)](https://pepy.tech/project/themap-tools)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://themap-tools.readthedocs.io/)
 
-# themap-tools: discovering TCR-HLA-Epitope interactions
+# themap-tools for TCR-HLA-Epitope interactions
 
 <p align="center">
   <img src="docs/source/_static/diagram.png" alt="applications" width="1200"/>
