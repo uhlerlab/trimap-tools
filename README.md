@@ -4,8 +4,8 @@
 </p>
 
 
-[![PyPI version](https://img.shields.io/pypi/v/your-package-name.svg)](https://pypi.org/project/themap-tools/)
-[![Downloads](https://static.pepy.tech/badge/your-package-name)](https://pepy.tech/project/themap-tools)
+[![PyPI version](https://img.shields.io/pypi/v/themap-tools)](https://pypi.org/project/themap-tools/)
+[![Downloads](https://static.pepy.tech/badge/themap-tools)](https://pepy.tech/project/themap-tools)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://themap-tools.readthedocs.io/)
 
 ===========================
