@@ -4,31 +4,30 @@
 </p>
 
 
-[![PyPI version](https://img.shields.io/pypi/v/themap-tools)](https://pypi.org/project/themap-tools/)
-[![Downloads](https://static.pepy.tech/badge/themap-tools)](https://pepy.tech/project/themap-tools)
-[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://themap-tools.readthedocs.io/)
+[![PyPI version](https://img.shields.io/pypi/v/trimap-tools)](https://pypi.org/project/trimap-tools/)
+[![Downloads](https://static.pepy.tech/badge/trimap-tools)](https://pepy.tech/project/trimap-tools)
+[![Docs](https://img.shields.io/badge/docs-latest-blue)](https://trimap-tools.readthedocs.io/)
 
-===========================
-# themap-tools for TCR-HLA-Epitope interactions
+# trimap-tools for TCR-HLA-Epitope interactions
 
 <p align="center">
   <img src="docs/source/_static/diagram.png" alt="applications" width="1200"/>
 </p>
 
-**themap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response. 
+**trimap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response. 
 
 ## Installation
-**themap-tools** requires **Python 3.9** or later. It is available on PyPI and can be installed using pip:
+**trimap-tools** requires **Python 3.9** or later. It is available on PyPI and can be installed using pip:
 ```bash
-pip install themap-tools
+pip install trimap-tools
 ```
 or by cloning the repository and installing it manually:
 ```bash
-pip install git+https://github.com/uhlerlab/themap-tools.git@main
+pip install git+https://github.com/uhlerlab/trimap-tools.git@main
 ```
 
 ## Tutorials
-For step-by-step guides on how to use **themap-tools**, including training HLA/peptide encoders and predicting TCR specificity, please refer to the [Documentation](https://themap-tools.readthedocs.io/) section.
+For step-by-step guides on how to use **trimap-tools**, including training HLA/peptide encoders and predicting TCR specificity, please refer to the [Documentation](https://trimap-tools.readthedocs.io/) section.
 
 ## Key Features
 
