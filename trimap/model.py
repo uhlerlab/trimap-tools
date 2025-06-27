@@ -6,8 +6,8 @@ from tqdm import tqdm
 from collections import defaultdict
 from torch.nn.utils.parametrizations import weight_norm
 from tqdm import tqdm
-from themap import net
-from themap import utils
+from trimap import net
+from trimap import utils
 import pandas as pd
 import logging
 import os
@@ -234,8 +234,8 @@ class PEP_vae(nn.Module):
                 conv_embed.append(z_conv.detach().cpu().numpy())
 
         return np.concatenate(pep_embed, axis=0), np.concatenate(conv_embed, axis=0)
-    
-class THE(nn.Module):
+
+class TCRbind(nn.Module):
     """
     THE (TCR-HLA-Epitope) model for predicting T-cell epitope binding.
 
@@ -249,24 +249,12 @@ class THE(nn.Module):
         q_dim (int): Feature dimension of TCR chains.
     """
     def __init__(self, ban_heads=8, mlp=[512, 128, 32], v_dim=256, q_dim=1024):
-        super(THE, self).__init__()
+        super(TCRbind, self).__init__()
         self.bcn_alpha = weight_norm(net.BANLayer(v_dim=v_dim, q_dim=q_dim, h_dim=mlp[0], h_out=ban_heads), name='h_mat', dim=None)
         self.bcn_beta = weight_norm(net.BANLayer(v_dim=v_dim, q_dim=q_dim, h_dim=mlp[0], h_out=ban_heads), name='h_mat', dim=None)
         self.classifier = net.MLPDecoder(in_dim=mlp[0]*2, hidden_dim=mlp[1], out_dim=mlp[2], binary=1)
         self.alpha_dict = None
         self.beta_dict = None
-
-    def print_logo(self):
-        """Print ASCII logo banner to console."""
-        logo = r"""
-████████╗██╗░░██╗███████╗███╗░░░███╗░█████╗░██████╗░
-╚══██╔══╝██║░░██║██╔════╝████╗░████║██╔══██╗██╔══██╗
-░░░██║░░░███████║█████╗░░██╔████╔██║███████║██████╔╝
-░░░██║░░░██╔══██║██╔══╝░░██║╚██╔╝██║██╔══██║██╔═══╝░
-░░░██║░░░██║░░██║███████╗██║░╚═╝░██║██║░░██║██║░░░░░
-░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░░░░
-        """
-        print(logo)
 
     def load_dict(self, device, df_data, max_alpha, max_beta, re_embed):
         """
@@ -279,7 +267,7 @@ class THE(nn.Module):
             max_beta (int): Maximum beta sequence length.
             re_embed (bool): If True, force re-embedding even if cache exists.
         """
-        from themap.BERT import ProtBERT_embed as PB
+        from trimap.BERT import ProtBERT_embed as PB
         prot_bert = PB(device)
 
         # Generalized loader/creator for a chain ('alpha' or 'beta')
@@ -481,7 +469,7 @@ class THE(nn.Module):
         Returns:
             None. (Trained weights are updated in-place.)
         """
-        self.print_logo()
+
         self.train()
 
         optimizer = torch.optim.Adam(self.parameters(), lr=lr, weight_decay=1e-4)

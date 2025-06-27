@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="themap-tools",
-    version="1.0.0",
+    name="trimap-tools",
+    version="1.0.3",
     packages=find_packages(),
     python_requires=">=3.9",
     install_requires=[
@@ -12,13 +12,15 @@ setup(
         "scikit-learn",
         "tqdm",
         "transformers",
+        "matplotlib",
+        "SentencePiece"
     ],
     author="Kai Cao",
     author_email="caokai1073@gmail.com",
-    description="Tools for THEmap",
+    description="Trimap for predicting TCR and Peptide-HLA binding",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/caokai1073/themap-tools", 
+    url="https://github.com/uhler/trimap-tools", 
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.9",

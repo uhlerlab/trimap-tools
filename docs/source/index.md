@@ -1,10 +1,10 @@
 # Discovering TCR-HLA-Epitope Interactions
 
-`themap-tools` is a package for analysis of `peptide-HLA presentation` and `TCR specificity`. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.
+`trimap-tools` is a package for analysis of `peptide-HLA presentation` and `TCR specificity`. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.
 
 <img src="./_static/diagram.png" alt="diagram" width="1000">
 
-## 🚀 Key Features of `themap-tools`
+## 🚀 Key Features of `trimap-tools`
 
 - **Peptide representation learning with HLA context**  
   Learns latent embeddings of peptides while incorporating HLA background, enabling biologically informed modeling.
@@ -20,9 +20,9 @@
 
 ## 🔧 Components
 
-- `themap.model.HLA_vae` — Variational Autoencoder for HLA sequences  
-- `themap.model.PEP_vae` — Variational Autoencoder for peptide sequences  
-- `themap.model.THE` — Main prediction module integrating TCRs with peptide or HLA targets
+- `trimap.model.HLA_vae` — Variational Autoencoder for HLA sequences  
+- `trimap.model.PEP_vae` — Variational Autoencoder for peptide sequences  
+- `trimap.model.THE` — Main prediction module integrating TCRs with peptide or HLA targets
 
 ## 📁 Sections
 

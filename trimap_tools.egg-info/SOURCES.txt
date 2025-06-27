@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+trimap/BERT.py
+trimap/__init__.py
+trimap/model.py
+trimap/net.py
+trimap/utils.py
+trimap_tools.egg-info/PKG-INFO
+trimap_tools.egg-info/SOURCES.txt
+trimap_tools.egg-info/dependency_links.txt
+trimap_tools.egg-info/requires.txt
+trimap_tools.egg-info/top_level.txt
