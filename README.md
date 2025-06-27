@@ -8,7 +8,7 @@
 [![Downloads](https://static.pepy.tech/badge/trimap-tools)](https://pepy.tech/project/trimap-tools)
 [![Docs](https://img.shields.io/badge/docs-latest-blue)](https://trimap-tools.readthedocs.io/)
 
-# trimap-tools for TCR-HLA-Epitope interactions
+# Discovering TCR-HLA-Epitope interactions with Deep Learning
 
 <p align="center">
   <img src="docs/source/_static/diagram.png" alt="applications" width="1200"/>
