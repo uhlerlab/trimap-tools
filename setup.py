@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="trimap-tools",
-    version="1.0.3",
+    version="1.0.4",
     packages=find_packages(),
     python_requires=">=3.9",
     install_requires=[
@@ -13,11 +13,12 @@ setup(
         "tqdm",
         "transformers",
         "matplotlib",
-        "SentencePiece"
+        "SentencePiece",
+        "seaborn",
     ],
     author="Kai Cao",
     author_email="caokai1073@gmail.com",
-    description="Trimap for predicting TCR and Peptide-HLA binding",
+    description="Discovering TCR-Epitope-HLA interactions with Deep Learning",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/uhler/trimap-tools", 
