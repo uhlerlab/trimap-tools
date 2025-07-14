@@ -11,7 +11,19 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "`themap-tools` requires Python 3.9 or later."
+    "`trimap-tools` requires Python 3.9 or later."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Create a conda environment and install the package:\n",
+    "\n",
+    "```bash\n",
+    "conda create -n trimap-env python=3.9\n",
+    "conda activate trimap-env\n",
+    "```"
    ]
   },
   {
@@ -21,12 +33,12 @@
     "It is available on PyPI and can be installed using pip:\n",
     "\n",
     "```bash\n",
-    "pip install themap-tools\n",
+    "pip install trimap-tools\n",
     "```\n",
     "or by cloning the repository and installing it manually:\n",
     "\n",
     "```bash\n",
-    "pip install git+https://github.com/caokai1073/themap-tools.git@main"
+    "pip install git+https://github.com/uhlerlab/trimap-tools.git@main"
    ]
   }
  ],

@@ -1,4 +1,4 @@
-# Discovering TCR-HLA-Epitope Interactions
+# Discovering TCR-Epitope-HLA Interactions
 
 `trimap-tools` is a package for analysis of `peptide-HLA presentation` and `TCR specificity`. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.
 

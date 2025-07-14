@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="Installation.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>Discovering TCR-HLA-Epitope Interactions</title>
+        <title>Discovering TCR-Epitope-HLA Interactions</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">themap-tools</div></a>
+      <a href="#"><div class="brand">trimap-tools</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">themap-tools</span>
+  <span class="sidebar-brand-text">trimap-tools</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -207,9 +207,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Installation.html">Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Turtorial/index.html">Tutorials</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Turtorial/HLA.html">Learn HLA representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Turtorial/Peptide.html">Learn peptide representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Turtorial/TCR.html">Predict TCR and peptide-HLA binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Turtorial/HLA.html">Step 1. Learn HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Turtorial/pHLA.html">Step 2. Learn peptide-HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Turtorial/TCR.html">Step 3. Predict TCR and peptide-HLA binding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Turtorial/TCR-HLA.html">Predict TCR and HLA association</a></li>
 </ul>
 </li>
@@ -260,12 +260,12 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="discovering-tcr-hla-epitope-interactions">
-<h1>Discovering TCR-HLA-Epitope Interactions<a class="headerlink" href="#discovering-tcr-hla-epitope-interactions" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">themap-tools</span></code> is a package for analysis of <code class="docutils literal notranslate"><span class="pre">peptide-HLA</span> <span class="pre">presentation</span></code> and <code class="docutils literal notranslate"><span class="pre">TCR</span> <span class="pre">specificity</span></code>. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.</p>
+          <section id="discovering-tcr-epitope-hla-interactions">
+<h1>Discovering TCR-Epitope-HLA Interactions<a class="headerlink" href="#discovering-tcr-epitope-hla-interactions" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">trimap-tools</span></code> is a package for analysis of <code class="docutils literal notranslate"><span class="pre">peptide-HLA</span> <span class="pre">presentation</span></code> and <code class="docutils literal notranslate"><span class="pre">TCR</span> <span class="pre">specificity</span></code>. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response.</p>
 <img src="./_static/diagram.png" alt="diagram" width="1000">
-<section id="key-features-of-themap-tools">
-<h2>🚀 Key Features of <code class="docutils literal notranslate"><span class="pre">themap-tools</span></code><a class="headerlink" href="#key-features-of-themap-tools" title="Link to this heading">¶</a></h2>
+<section id="key-features-of-trimap-tools">
+<h2>🚀 Key Features of <code class="docutils literal notranslate"><span class="pre">trimap-tools</span></code><a class="headerlink" href="#key-features-of-trimap-tools" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Peptide representation learning with HLA context</strong><br />
 Learns latent embeddings of peptides while incorporating HLA background, enabling biologically informed modeling.</p></li>
@@ -280,17 +280,17 @@ Identifies novel peptides potentially involved in disease by integrating small-s
 <section id="components">
 <h2>🔧 Components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">themap.model.HLA_vae</span></code> — Variational Autoencoder for HLA sequences</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">themap.model.PEP_vae</span></code> — Variational Autoencoder for peptide sequences</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">themap.model.THE</span></code> — Main prediction module integrating TCRs with peptide or HLA targets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trimap.model.HLA_vae</span></code> — Variational Autoencoder for HLA sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trimap.model.PEP_vae</span></code> — Variational Autoencoder for peptide sequences</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trimap.model.THE</span></code> — Main prediction module integrating TCRs with peptide or HLA targets</p></li>
 </ul>
 </section>
 <section id="sections">
 <h2>📁 Sections<a class="headerlink" href="#sections" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>🧰 <strong>Tutorials</strong><br />
+<li><p><strong>Tutorials</strong><br />
 Step-by-step guides for training HLA/peptide encoders and predicting TCR specificity using example or custom data.</p></li>
-<li><p>🧪 <strong>Discover Disease-Associated Epitopes</strong><br />
+<li><p><strong>Discover Disease-Associated Epitopes</strong><br />
 Learn how to integrate small-scale experimental data with large public datasets to uncover novel epitope–TCR interactions relevant to specific diseases.</p></li>
 </ul>
 <p>Explore the sidebar to get started 👉<br />
@@ -351,8 +351,8 @@ For installation instructions, pretrained models, or benchmarking datasets, refe
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Discovering TCR-HLA-Epitope Interactions</a><ul>
-<li><a class="reference internal" href="#key-features-of-themap-tools">🚀 Key Features of <code class="docutils literal notranslate"><span class="pre">themap-tools</span></code></a></li>
+<li><a class="reference internal" href="#">Discovering TCR-Epitope-HLA Interactions</a><ul>
+<li><a class="reference internal" href="#key-features-of-trimap-tools">🚀 Key Features of <code class="docutils literal notranslate"><span class="pre">trimap-tools</span></code></a></li>
 <li><a class="reference internal" href="#components">🔧 Components</a></li>
 <li><a class="reference internal" href="#sections">📁 Sections</a></li>
 </ul>
@@ -366,7 +366,7 @@ For installation instructions, pretrained models, or benchmarking datasets, refe
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=f2a433a1"></script>
+</div><script src="_static/documentation_options.js?v=1ed6394b"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

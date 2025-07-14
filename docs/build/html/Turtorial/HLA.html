@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Learn peptide representation" href="Peptide.html" /><link rel="prev" title="Tutorials" href="index.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Step 2. Learn peptide-HLA representation" href="pHLA.html" /><link rel="prev" title="Tutorials" href="index.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>Learn HLA representation</title>
+        <title>Step 1. Learn HLA representation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">themap-tools</div></a>
+      <a href="../index.html"><div class="brand">trimap-tools</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">themap-tools</span>
+  <span class="sidebar-brand-text">trimap-tools</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -207,9 +207,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Learn HLA representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Peptide.html">Learn peptide representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TCR.html">Predict TCR and peptide-HLA binding</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Step 1. Learn HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pHLA.html">Step 2. Learn peptide-HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TCR.html">Step 3. Predict TCR and peptide-HLA binding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TCR-HLA.html">Predict TCR and HLA association</a></li>
 </ul>
 </li>
@@ -260,8 +260,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="learn-hla-representation">
-<h1>Learn HLA representation<a class="headerlink" href="#learn-hla-representation" title="Link to this heading">¶</a></h1>
+          <section id="step-1-learn-hla-representation">
+<h1>Step 1. Learn HLA representation<a class="headerlink" href="#step-1-learn-hla-representation" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">themap</span></code> learns representation of HLA alleles from <a class="reference external" href="https://www.ebi.ac.uk/ipd/imgt/hla/"><code class="docutils literal notranslate"><span class="pre">IPD-IMGT/HLA</span> <span class="pre">database</span></code></a>.</p>
 <p><strong>Human Leukocyte Antigen (HLA)</strong> (or Major Histocompatibility Complex, MHC) molecules are cell surface proteins that play a critical role in the immune system by presenting peptide fragments to T cells. These peptides, typically derived from endogenous or pathogenic proteins, are displayed in the binding groove of HLA molecules and scanned by T cell receptors (TCRs) to initiate immune responses.</p>
 <p>HLA molecules are broadly categorized into <strong>Class I</strong> and <strong>Class II</strong>. Class I HLA molecules (e.g., <strong>HLA-A, HLA-B, HLA-C</strong>) present peptides derived from intracellular proteins—such as viral antigens or tumor-associated proteins—to CD8⁺ cytotoxic T cells. In contrast, Class II HLA molecules (e.g., HLA-DR, HLA-DP, HLA-DQ) present peptides originating from extracellular proteins to CD4⁺ helper T cells. This distinction reflects their specialized roles in monitoring different compartments of the immune landscape and orchestrating appropriate adaptive immune responses. <strong>Our current algorithm focuses specifically on Class I HLA molecules and their peptide presentation</strong>.</p>
@@ -284,9 +284,14 @@ The file contains a dictionary where the keys are the HLA allele names and the v
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap</span><span class="w"> </span><span class="kn">import</span> <span class="n">model</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">trimap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trimap version:&#39;</span><span class="p">,</span> <span class="n">trimap</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trimap version: 1.0.4
 </pre></div>
 </div>
 </div>
@@ -386,15 +391,20 @@ YHTEYREICRKTDESTLYLNYHDYTWAELAYEWY
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epochs: 100%|██████████| 200/200 [01:14&lt;00:00,  2.67it/s, KL_loss=0.0148,recon_loss=0.3391]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epochs: 100%|██████████| 200/200 [01:21&lt;00:00,  2.46it/s, KL_loss=0.0148,recon_loss=0.3391]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Load our pre-trained model if needed. <a class="reference external" href="https://drive.google.com/file/d/1ogPnFEfJMdcLLMj5Ky5E__57BeMEeqfG/view?usp=drive_link">Download hla_model.pt</a></p>
+<p>Load our pre-trained model if needed. <a class="reference external" href="https://drive.google.com/file/d/1D1xs8VIpw1M49CwKHTcmkU0ExzfY3iFe/view?usp=drive_link">Download hla_model.pt</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hla_model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;hla_model.pt&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
 </pre></div>
 </div>
 </div>
@@ -455,11 +465,11 @@ YHTEYREICRKTDESTLYLNYHDYTWAELAYEWY
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>torch.Size([10004])
 HLA-A: 3177
-HLA-C: 2912
 HLA-B: 3915
+HLA-C: 2912
 </pre></div>
 </div>
-<img alt="../_images/00ab6a80b49a522e325b30df93b0db51066987d72e87b7df68fd40cd25945bd5.png" src="../_images/00ab6a80b49a522e325b30df93b0db51066987d72e87b7df68fd40cd25945bd5.png" />
+<img alt="../_images/ae486e1c996be113e3fcb26dec285debd926e721fb0ff6300948cb56d82d1b15.png" src="../_images/ae486e1c996be113e3fcb26dec285debd926e721fb0ff6300948cb56d82d1b15.png" />
 </div>
 </div>
 </section>
@@ -549,7 +559,7 @@ HLA-B: 3915
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1832073/3622903819.py:32: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_155970/3622903819.py:32: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
   cmap = cm.get_cmap(&quot;tab20b&quot;, len(highlight_terms))
 </pre></div>
 </div>
@@ -564,12 +574,12 @@ HLA-B: 3915
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="Peptide.html">
+          <a class="next-page" href="pHLA.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Learn peptide representation</div>
+                <div class="title">Step 2. Learn peptide-HLA representation</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -614,7 +624,7 @@ HLA-B: 3915
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Learn HLA representation</a><ul>
+<li><a class="reference internal" href="#">Step 1. Learn HLA representation</a><ul>
 <li><a class="reference internal" href="#load-hla-amino-acid-sequences">Load HLA amino-acid sequences</a></li>
 <li><a class="reference internal" href="#encode-hla-sequences-with-blosum50-substitution-matrix">Encode HLA sequences with BLOSUM50 substitution matrix</a></li>
 <li><a class="reference internal" href="#train-the-model">Train the model</a></li>
@@ -631,7 +641,7 @@ HLA-B: 3915
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+</div><script src="../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

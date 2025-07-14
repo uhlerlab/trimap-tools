@@ -8,6 +8,6 @@ To predict TCR specificity using trimap-tools, the first step involves learning 
 :maxdepth: 1
 
 HLA
-Peptide
+pHLA
 TCR
 TCR-HLA

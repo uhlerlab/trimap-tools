@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Discover disease-associated epitopes" href="../Application/index.html" /><link rel="prev" title="Predict TCR and peptide-HLA binding" href="TCR.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Discover disease-associated epitopes" href="../Application/index.html" /><link rel="prev" title="Step 3. Predict TCR and peptide-HLA binding" href="TCR.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
         <title>Predict TCR and HLA association</title>
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">themap-tools</div></a>
+      <a href="../index.html"><div class="brand">trimap-tools</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">themap-tools</span>
+  <span class="sidebar-brand-text">trimap-tools</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -207,9 +207,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="HLA.html">Learn HLA representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Peptide.html">Learn peptide representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="TCR.html">Predict TCR and peptide-HLA binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HLA.html">Step 1. Learn HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pHLA.html">Step 2. Learn peptide-HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TCR.html">Step 3. Predict TCR and peptide-HLA binding</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Predict TCR and HLA association</a></li>
 </ul>
 </li>
@@ -270,8 +270,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">THE</span><span class="p">,</span> <span class="n">PEP_vae</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimap.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">TCRbind</span><span class="p">,</span> <span class="n">PEP_vae</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -282,7 +282,7 @@
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:1&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -333,7 +333,7 @@
 <h2>Train and save the model<a class="headerlink" href="#train-and-save-the-model" title="Link to this heading">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">THE</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TCRbind</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_train</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="s1">&#39;hla&#39;</span><span class="p">,</span> <span class="n">hla_dict</span><span class="o">=</span><span class="n">hla_dict</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;TH_model.pt&#39;</span><span class="p">)</span>
 </pre></div>
@@ -481,6 +481,19 @@ INFO:themap.model:No new CDR3beta sequences found
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TCRbind</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;TH_model.pt&#39;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="test-the-performance-of-the-model">
 <h2>Test the performance of the model<a class="headerlink" href="#test-the-performance-of-the-model" title="Link to this heading">¶</a></h2>
@@ -499,12 +512,19 @@ INFO:themap.model:No new CDR3beta sequences found
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:themap.model:Loading alpha_dict.pt
-INFO:themap.model:No new CDR3alpha sequences found
-INFO:themap.model:Loading beta_dict.pt
-INFO:themap.model:No new CDR3beta sequences found
-INFO:themap.model:Predicting...
-100%|██████████| 74/74 [00:26&lt;00:00,  2.79it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/local_home/cao/miniconda3/envs/trimap-env/lib/python3.9/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+You are using the default legacy behaviour of the &lt;class &#39;transformers.models.t5.tokenization_t5.T5Tokenizer&#39;&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+INFO:trimap.model:Loading alpha_dict.pt
+INFO:trimap.model:Found new alpha sequences, embedding...
+100%|██████████| 3/3 [00:09&lt;00:00,  3.17s/it]
+INFO:trimap.model:Updated and saved alpha_dict.pt
+INFO:trimap.model:Loading beta_dict.pt
+INFO:trimap.model:Found new beta sequences, embedding...
+100%|██████████| 3/3 [00:09&lt;00:00,  3.21s/it]
+INFO:trimap.model:Updated and saved beta_dict.pt
+INFO:trimap.model:Predicting...
+100%|██████████| 74/74 [00:18&lt;00:00,  3.90it/s]
 </pre></div>
 </div>
 </div>
@@ -566,7 +586,7 @@ INFO:themap.model:Predicting...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/91d41ad2a63aa32e11a037edc41832bd9b504ea252e99d46e41ec7b6c21b89c2.png" src="../_images/91d41ad2a63aa32e11a037edc41832bd9b504ea252e99d46e41ec7b6c21b89c2.png" />
+<img alt="../_images/35d95a082b353481a74b0040214c207ce14dd12fe3e16451f8e43b5d478ab833.png" src="../_images/35d95a082b353481a74b0040214c207ce14dd12fe3e16451f8e43b5d478ab833.png" />
 </div>
 </div>
 </section>
@@ -591,7 +611,30 @@ INFO:themap.model:Predicting...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5b7704a1c8e156bae82dda8c509525ad67ec35068588702b87240b5d2081b177.png" src="../_images/5b7704a1c8e156bae82dda8c509525ad67ec35068588702b87240b5d2081b177.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HLA
+HLA-A*02:01    835
+HLA-B*07:02    195
+HLA-A*24:02     96
+HLA-B*37:01     95
+HLA-A*01:01     94
+HLA-B*15:02     42
+HLA-B*08:01     39
+Name: count, dtype: int64
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trimap.model:Loading alpha_dict.pt
+INFO:trimap.model:Found new alpha sequences, embedding...
+100%|██████████| 4/4 [00:15&lt;00:00,  4.00s/it]
+INFO:trimap.model:Updated and saved alpha_dict.pt
+INFO:trimap.model:Loading beta_dict.pt
+INFO:trimap.model:Found new beta sequences, embedding...
+100%|██████████| 4/4 [00:16&lt;00:00,  4.12s/it]
+INFO:trimap.model:Updated and saved beta_dict.pt
+INFO:trimap.model:Predicting...
+100%|██████████| 16/16 [00:05&lt;00:00,  3.14it/s]
+</pre></div>
+</div>
+<img alt="../_images/616915dbaee4a1dc048237bdd01c9b2611b8a02f3a341c990f7e5832de59f339.png" src="../_images/616915dbaee4a1dc048237bdd01c9b2611b8a02f3a341c990f7e5832de59f339.png" />
 </div>
 </div>
 </section>
@@ -618,7 +661,7 @@ INFO:themap.model:Predicting...
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Predict TCR and peptide-HLA binding</div>
+                <div class="title">Step 3. Predict TCR and peptide-HLA binding</div>
                 
               </div>
             </a>
@@ -671,7 +714,7 @@ INFO:themap.model:Predicting...
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+</div><script src="../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>

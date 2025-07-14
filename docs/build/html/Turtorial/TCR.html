@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Predict TCR and HLA association" href="TCR-HLA.html" /><link rel="prev" title="Learn peptide representation" href="Peptide.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Predict TCR and HLA association" href="TCR-HLA.html" /><link rel="prev" title="Step 2. Learn peptide-HLA representation" href="pHLA.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
-        <title>Predict TCR and peptide-HLA binding</title>
+        <title>Step 3. Predict TCR and peptide-HLA binding</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -168,7 +168,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">themap-tools</div></a>
+      <a href="../index.html"><div class="brand">trimap-tools</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -195,7 +195,7 @@
     <img class="sidebar-logo" src="../_static/logo.png" alt="Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">themap-tools</span>
+  <span class="sidebar-brand-text">trimap-tools</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -207,9 +207,9 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Installation.html">Installation</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Tutorials</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Tutorials</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="HLA.html">Learn HLA representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Peptide.html">Learn peptide representation</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Predict TCR and peptide-HLA binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="HLA.html">Step 1. Learn HLA representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pHLA.html">Step 2. Learn peptide-HLA representation</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Step 3. Predict TCR and peptide-HLA binding</a></li>
 <li class="toctree-l2"><a class="reference internal" href="TCR-HLA.html">Predict TCR and HLA association</a></li>
 </ul>
 </li>
@@ -260,8 +260,8 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="predict-tcr-and-peptide-hla-binding">
-<h1>Predict TCR and peptide-HLA binding<a class="headerlink" href="#predict-tcr-and-peptide-hla-binding" title="Link to this heading">¶</a></h1>
+          <section id="step-3-predict-tcr-and-peptide-hla-binding">
+<h1>Step 3. Predict TCR and peptide-HLA binding<a class="headerlink" href="#step-3-predict-tcr-and-peptide-hla-binding" title="Link to this heading">¶</a></h1>
 <p><strong>T cell receptors (TCR)</strong>, expressed on the surface of T cells, recognize and bind to immunogenic peptides or epitopes presented by human leukocyte antigen (HLA). This recognition process is fundamental to the adaptive immune system and serves as a critical mechanism for identifying and responding to pathogenic threats.  A diverse array of TCRs ensures protection against a wide range of pathogens and malignant cells. Mechanisms exist to eliminate T cells that recognize self-antigens (central and peripheral tolerance), but self-tolerance can fail, leading to <strong>autoimmunity</strong>, especially when hidden self-antigens are exposed or when microbial antigens mimic self-antigens. <strong>Identifying the specific epitopes that trigger T cell activation in different disease contexts</strong> can provide crucial insights into disease pathogenesis and could enable the development of personalized therapies, such as <strong>tolerance-inducing vaccines</strong> or <strong>TCR-specific T cell depletion</strong>.</p>
 <a class="reference internal image-reference" href="../_images/TCR.png"><img alt="模型结果图" class="align-center" src="../_images/TCR.png" style="width: 600px;" />
 </a>
@@ -277,8 +277,8 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">themap.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">THE</span><span class="p">,</span> <span class="n">PEP_vae</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimap</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">trimap.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">TCRbind</span><span class="p">,</span> <span class="n">PEP_vae</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -292,7 +292,7 @@
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">deterministic</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:1&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;VDJdb_train.csv&#39;</span><span class="p">)</span>
 </pre></div>
@@ -347,146 +347,155 @@ Name: 0, dtype: object
 <h2>Train and save the model<a class="headerlink" href="#train-and-save-the-model" title="Link to this heading">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">THEmodel</span> <span class="o">=</span> <span class="n">THE</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">THEmodel</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
-<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">THEmodel</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;THE_model.pt&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TCRbind</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s1">&#39;TCRmodel.pt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>████████╗██╗░░██╗███████╗███╗░░░███╗░█████╗░██████╗░
-╚══██╔══╝██║░░██║██╔════╝████╗░████║██╔══██╗██╔══██╗
-░░░██║░░░███████║█████╗░░██╔████╔██║███████║██████╔╝
-░░░██║░░░██╔══██║██╔══╝░░██║╚██╔╝██║██╔══██║██╔═══╝░
-░░░██║░░░██║░░██║███████╗██║░╚═╝░██║██║░░██║██║░░░░░
-░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░░░░
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄       ▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ 
+▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌     ▐░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+ ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌ ▀▀▀▀█░█▀▀▀▀ ▐░▌░▌   ▐░▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌
+     ▐░▌     ▐░▌       ▐░▌     ▐░▌     ▐░▌▐░▌ ▐░▌▐░▌▐░▌       ▐░▌▐░▌       ▐░▌
+     ▐░▌     ▐░█▄▄▄▄▄▄▄█░▌     ▐░▌     ▐░▌ ▐░▐░▌ ▐░▌▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌
+     ▐░▌     ▐░░░░░░░░░░░▌     ▐░▌     ▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌
+     ▐░▌     ▐░█▀▀▀▀█░█▀▀      ▐░▌     ▐░▌   ▀   ▐░▌▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ 
+     ▐░▌     ▐░▌     ▐░▌       ▐░▌     ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          
+     ▐░▌     ▐░▌      ▐░▌  ▄▄▄▄█░█▄▄▄▄ ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          
+     ▐░▌     ▐░▌       ▐░▌▐░░░░░░░░░░░▌▐░▌       ▐░▌▐░▌       ▐░▌▐░▌          
+      ▀       ▀         ▀  ▀▀▀▀▀▀▀▀▀▀▀  ▀         ▀  ▀         ▀  ▀           
         
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:themap.model:Training...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trimap.model:Training...
 You are using the default legacy behaviour of the &lt;class &#39;transformers.models.t5.tokenization_t5.T5Tokenizer&#39;&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
-INFO:themap.model:Loading alpha_dict.pt
-INFO:themap.model:No new CDR3alpha sequences found
-INFO:themap.model:Loading beta_dict.pt
-INFO:themap.model:No new CDR3beta sequences found
-100%|██████████| 253/253 [01:07&lt;00:00,  3.74it/s]
+INFO:trimap.model:alpha_dict.pt not found, generating...
+100%|██████████| 66/66 [05:04&lt;00:00,  4.62s/it]
+INFO:trimap.model:Saved alpha_dict.pt
+INFO:trimap.model:No new alpha sequences found
+INFO:trimap.model:beta_dict.pt not found, generating...
+100%|██████████| 69/69 [05:23&lt;00:00,  4.68s/it]
+INFO:trimap.model:Saved beta_dict.pt
+INFO:trimap.model:No new beta sequences found
+100%|██████████| 253/253 [01:18&lt;00:00,  3.24it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/20], Loss: 0.6152, ROC: 0.6933
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [1/20], Loss: 0.5968, ROC: 0.6886
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [00:59&lt;00:00,  4.26it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:37&lt;00:00,  2.58it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/20], Loss: 0.5394, ROC: 0.7498
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [2/20], Loss: 0.5190, ROC: 0.7571
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:18&lt;00:00,  3.24it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:19&lt;00:00,  3.20it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/20], Loss: 0.5514, ROC: 0.7743
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [3/20], Loss: 0.4786, ROC: 0.7846
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:02&lt;00:00,  4.04it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:24&lt;00:00,  2.99it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/20], Loss: 0.5835, ROC: 0.7902
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [4/20], Loss: 0.6179, ROC: 0.7987
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:04&lt;00:00,  3.91it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:24&lt;00:00,  2.99it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/20], Loss: 0.3517, ROC: 0.8045
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [5/20], Loss: 0.3444, ROC: 0.8125
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:07&lt;00:00,  3.72it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:28&lt;00:00,  2.86it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/20], Loss: 0.4643, ROC: 0.8171
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [6/20], Loss: 0.4474, ROC: 0.8223
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:54&lt;00:00,  4.62it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:21&lt;00:00,  3.12it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/20], Loss: 0.3954, ROC: 0.8281
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [7/20], Loss: 0.3058, ROC: 0.8320
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [00:54&lt;00:00,  4.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:17&lt;00:00,  3.26it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/20], Loss: 0.5236, ROC: 0.8372
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [8/20], Loss: 0.5200, ROC: 0.8405
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:55&lt;00:00,  4.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:22&lt;00:00,  3.07it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/20], Loss: 0.5375, ROC: 0.8472
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [9/20], Loss: 0.5777, ROC: 0.8506
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:55&lt;00:00,  4.58it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:17&lt;00:00,  3.26it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/20], Loss: 0.4031, ROC: 0.8572
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [10/20], Loss: 0.3730, ROC: 0.8578
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:53&lt;00:00,  4.73it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:19&lt;00:00,  3.19it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/20], Loss: 0.4266, ROC: 0.8634
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [11/20], Loss: 0.4330, ROC: 0.8651
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:55&lt;00:00,  4.54it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:18&lt;00:00,  3.21it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/20], Loss: 0.2511, ROC: 0.8746
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [12/20], Loss: 0.1742, ROC: 0.8771
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:00&lt;00:00,  4.16it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:20&lt;00:00,  3.13it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/20], Loss: 0.5195, ROC: 0.8829
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [13/20], Loss: 0.5427, ROC: 0.8836
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [00:54&lt;00:00,  4.64it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:17&lt;00:00,  3.25it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/20], Loss: 0.4364, ROC: 0.8927
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [14/20], Loss: 0.4505, ROC: 0.8918
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:55&lt;00:00,  4.55it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:16&lt;00:00,  3.29it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/20], Loss: 0.5727, ROC: 0.9016
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [15/20], Loss: 0.1103, ROC: 0.8999
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:07&lt;00:00,  3.72it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:22&lt;00:00,  3.05it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [16/20], Loss: 0.3470, ROC: 0.9093
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [16/20], Loss: 0.3280, ROC: 0.9075
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:11&lt;00:00,  3.55it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:18&lt;00:00,  3.20it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [17/20], Loss: 0.3069, ROC: 0.9173
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [17/20], Loss: 0.3075, ROC: 0.9154
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [00:57&lt;00:00,  4.43it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 253/253 [01:19&lt;00:00,  3.17it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [18/20], Loss: 0.4123, ROC: 0.9254
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [18/20], Loss: 0.4465, ROC: 0.9234
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [00:54&lt;00:00,  4.61it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:17&lt;00:00,  3.26it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [19/20], Loss: 0.3053, ROC: 0.9314
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [19/20], Loss: 0.3247, ROC: 0.9297
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [00:54&lt;00:00,  4.65it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 252/252 [01:17&lt;00:00,  3.24it/s]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [20/20], Loss: 0.2523, ROC: 0.9383
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [20/20], Loss: 0.2876, ROC: 0.9367
 </pre></div>
 </div>
 </div>
@@ -496,8 +505,8 @@ INFO:themap.model:No new CDR3beta sequences found
 <p>If you want to use a pretrained model, you can download it from <a class="reference external" href="https://drive.google.com/file/d/1liKCdCACvxinCogHL4rqTyxP_i0CKk2O/view?usp=drive_link">here</a> and load it using the following code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">THEmodel</span> <span class="o">=</span> <span class="n">THE</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-<span class="n">THEmodel</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;THE_model.pt&#39;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TCRbind</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;TCRmodel.pt&#39;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">device</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -517,19 +526,22 @@ INFO:themap.model:No new CDR3beta sequences found
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;VDJdb_test.csv&#39;</span><span class="p">)</span>
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">determine_tcr_seq_vj</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;V_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;J_alpha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">chain</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">determine_tcr_seq_vj</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;V_beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;J_beta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">chain</span><span class="o">=</span><span class="s1">&#39;B&#39;</span><span class="p">)</span>
-<span class="n">result</span><span class="p">,</span> <span class="n">cdr3a_attn</span><span class="p">,</span> <span class="n">cdr3b_attn</span> <span class="o">=</span> <span class="n">THEmodel</span><span class="o">.</span><span class="n">test_model</span><span class="p">(</span><span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">cdr3a_attn</span><span class="p">,</span> <span class="n">cdr3b_attn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">test_model</span><span class="p">(</span><span class="n">df_test</span><span class="o">=</span><span class="n">df_test</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You are using the default legacy behaviour of the &lt;class &#39;transformers.models.t5.tokenization_t5.T5Tokenizer&#39;&gt;. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
-INFO:themap.model:Loading alpha_dict.pt
-INFO:themap.model:No new CDR3alpha sequences found
-INFO:themap.model:Loading beta_dict.pt
-INFO:themap.model:No new CDR3beta sequences found
-INFO:themap.model:Predicting...
-100%|██████████| 44/44 [00:13&lt;00:00,  3.16it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:trimap.model:Loading alpha_dict.pt
+INFO:trimap.model:Found new alpha sequences, embedding...
+100%|██████████| 3/3 [00:13&lt;00:00,  4.44s/it]
+INFO:trimap.model:Updated and saved alpha_dict.pt
+INFO:trimap.model:Loading beta_dict.pt
+INFO:trimap.model:Found new beta sequences, embedding...
+100%|██████████| 4/4 [00:14&lt;00:00,  3.66s/it]
+INFO:trimap.model:Updated and saved beta_dict.pt
+INFO:trimap.model:Predicting...
+100%|██████████| 44/44 [00:08&lt;00:00,  4.91it/s]
 </pre></div>
 </div>
 </div>
@@ -596,16 +608,16 @@ INFO:themap.model:Predicting...
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Plot ROC and Precision-Recall curves</span>
-<span class="n">plot_roc_prc_curve</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">],</span> <span class="n">title_prefix</span><span class="o">=</span><span class="s1">&#39;THE: &#39;</span><span class="p">)</span>
+<span class="n">plot_roc_prc_curve</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">],</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;pred&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>THE: ROC-AUC: 0.8565
-THE: PRC-AUC: 0.4687
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ROC-AUC: 0.8526
+PRC-AUC: 0.4763
 </pre></div>
 </div>
-<img alt="../_images/c7ee538f5267cfc08a9744889c2677b3c72f968971c2174b072cc21f4bd03cd8.png" src="../_images/c7ee538f5267cfc08a9744889c2677b3c72f968971c2174b072cc21f4bd03cd8.png" />
+<img alt="../_images/8e11825beab63d44851806567b8a8059221b5e9a65e7f15e124791cf575f90f5.png" src="../_images/8e11825beab63d44851806567b8a8059221b5e9a65e7f15e124791cf575f90f5.png" />
 </div>
 </div>
 </section>
@@ -678,8 +690,8 @@ THE: PRC-AUC: 0.4687
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2955397b8007823320894a0207572d8e85b41653f2cffff4145975e66290176f.png" src="../_images/2955397b8007823320894a0207572d8e85b41653f2cffff4145975e66290176f.png" />
-<img alt="../_images/411fb43b125b20b664d82ceaf47a4b26a52b5e9a5605e901fac3892bdfc3e5be.png" src="../_images/411fb43b125b20b664d82ceaf47a4b26a52b5e9a5605e901fac3892bdfc3e5be.png" />
+<img alt="../_images/566b3216848b918b02e0ccbd927eb7ad947c6658dcfcd1c0894eef8de9334128.png" src="../_images/566b3216848b918b02e0ccbd927eb7ad947c6658dcfcd1c0894eef8de9334128.png" />
+<img alt="../_images/c2f0333976da5b0b0f6f035570b2c7d7b15852f77e1fc6d5a89d76f98b5e5b2d.png" src="../_images/c2f0333976da5b0b0f6f035570b2c7d7b15852f77e1fc6d5a89d76f98b5e5b2d.png" />
 </div>
 </div>
 </section>
@@ -721,7 +733,7 @@ THE: PRC-AUC: 0.4687
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e4c1513b9c0d043653a17b1aa7c1b489c0dea1fe8bdd228b7a811994d39186b9.png" src="../_images/e4c1513b9c0d043653a17b1aa7c1b489c0dea1fe8bdd228b7a811994d39186b9.png" />
+<img alt="../_images/f1f5fe4a52efcf44a653e0bb38fa8c5f85d5aa5ec43b3a47eb2b8944c9458ebe.png" src="../_images/f1f5fe4a52efcf44a653e0bb38fa8c5f85d5aa5ec43b3a47eb2b8944c9458ebe.png" />
 </div>
 </div>
 </section>
@@ -741,14 +753,14 @@ THE: PRC-AUC: 0.4687
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="Peptide.html">
+          <a class="prev-page" href="pHLA.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Learn peptide representation</div>
+                <div class="title">Step 2. Learn peptide-HLA representation</div>
                 
               </div>
             </a>
@@ -782,7 +794,7 @@ THE: PRC-AUC: 0.4687
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Predict TCR and peptide-HLA binding</a><ul>
+<li><a class="reference internal" href="#">Step 3. Predict TCR and peptide-HLA binding</a><ul>
 <li><a class="reference internal" href="#load-tcr-and-peptide-hla-binding-data">Load TCR and peptide-HLA binding data.</a><ul>
 <li><a class="reference internal" href="#reconstruct-full-tcr-sequences-by-cdr3-and-vj-gene-information">Reconstruct full TCR sequences by CDR3 and VJ gene information</a></li>
 </ul>
@@ -805,7 +817,7 @@ THE: PRC-AUC: 0.4687
       
     </aside>
   </div>
-</div><script src="../_static/documentation_options.js?v=f2a433a1"></script>
+</div><script src="../_static/documentation_options.js?v=1ed6394b"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
