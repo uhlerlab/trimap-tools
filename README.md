@@ -34,6 +34,8 @@ pip install git+https://github.com/uhlerlab/trimap-tools.git@main
 ## Tutorials
 For step-by-step guides on how to use **trimap-tools**, including training HLA/peptide encoders and predicting TCR specificity, please refer to the [Documentation](https://trimap-tools.readthedocs.io/) section.
 
+Step 1. [Train representations for HLA sequences](https://trimap-tools.readthedocs.io/en/latest/Turtorial/HLA.html)
+
 ## Key Features
 
 - **Peptide representation learning with HLA context**  
