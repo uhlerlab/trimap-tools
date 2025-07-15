@@ -36,6 +36,10 @@ For step-by-step guides on how to use **trimap-tools**, including training HLA/p
 
 Step 1. [Train representations for HLA sequences](https://trimap-tools.readthedocs.io/en/latest/Turtorial/HLA.html)
 
+Step 2. [Train representations for peptides in the context of HLA](https://trimap-tools.readthedocs.io/en/latest/Turtorial/pHLA.html)
+
+Step 3. [Predict TCR specificity for pHLA complexes](https://trimap-tools.readthedocs.io/en/latest/Turtorial/TCR.html)
+
 ## Key Features
 
 - **Peptide representation learning with HLA context**  
