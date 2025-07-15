@@ -48,7 +48,7 @@ To train a model for discovering disease-associated epitopes, follow these steps
 
 + [Scan peptides from disease-related proteomes](https://trimap-tools.readthedocs.io/en/latest/Application/Screen_peptides.html)
 
-+ [Apply THEmap to predict novel epitopes](https://trimap-tools.readthedocs.io/en/latest/Application/Predict_epitopes.html)
++ [Apply TriMap to predict novel epitopes](https://trimap-tools.readthedocs.io/en/latest/Application/Predict_epitopes.html)
 
 ## Key Features
 
