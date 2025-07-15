@@ -17,7 +17,12 @@
 **trimap-tools** is a package for analysis of peptide-HLA presentation and TCR specificity. It is designed to help researchers understand the interactions between T cell receptors (TCRs) and peptides presented by human leukocyte antigen (HLA) molecules, which play a crucial role in the immune response. 
 
 ## Installation
-**trimap-tools** requires **Python 3.9** or later. It is available on PyPI and can be installed using pip:
+Create a conda environment. **trimap-tools** requires **Python 3.9** or later.
+```bash
+conda create -n trimap-env python=3.9
+conda activate trimap-env
+```
+It is available on PyPI and can be installed using pip:
 ```bash
 pip install trimap-tools
 ```

@@ -583,7 +583,10 @@ class TCRbind(nn.Module):
         targets='peptide',
         max_alpha=125,
         max_beta=127,
-        max_pep=14
+        max_pep=14,
+        phla_model_dir='phla_model.pt',
+        hla_model_dir='hla_model.pt',
+        re_embed=False
     ):
         """
         Evaluate the THE model on a held-out test dataset.
@@ -625,7 +628,10 @@ class TCRbind(nn.Module):
                 max_alpha=max_alpha,
                 max_beta=max_beta,
                 max_pep=max_pep,
-                 hla_dict=hla_dict,
+                hla_dict=hla_dict,
+                phla_model_dir=phla_model_dir,
+                hla_model_dir=hla_model_dir,
+                re_embed=re_embed,
             )
 
         logger.info('Predicting...')

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="trimap-tools",
-    version="1.0.4",
+    version="1.0.5",
     packages=find_packages(),
     python_requires=">=3.9",
     install_requires=[
