@@ -34,11 +34,21 @@ pip install git+https://github.com/uhlerlab/trimap-tools.git@main
 ## Tutorials
 For step-by-step guides on how to use **trimap-tools**, including training HLA/peptide encoders and predicting TCR specificity, please refer to the [Documentation](https://trimap-tools.readthedocs.io/) section.
 
-Step 1. [Train representations for HLA sequences](https://trimap-tools.readthedocs.io/en/latest/Turtorial/HLA.html)
+To predict TCR specificity for pHLA complexes, follow these steps:
 
-Step 2. [Train representations for peptides in the context of HLA](https://trimap-tools.readthedocs.io/en/latest/Turtorial/pHLA.html)
++ Step 1. [Train representations for HLA sequences](https://trimap-tools.readthedocs.io/en/latest/Turtorial/HLA.html) or load our pre-trained models from [Here](https://drive.google.com/file/d/1WUSV3ZvzyReVeG0w3URtS1i7gDES_ltq/view?usp=drive_link).
 
-Step 3. [Predict TCR specificity for pHLA complexes](https://trimap-tools.readthedocs.io/en/latest/Turtorial/TCR.html)
++ Step 2. [Train representations for peptides in the context of HLA](https://trimap-tools.readthedocs.io/en/latest/Turtorial/pHLA.html) or load our pre-trained models from [Here](https://drive.google.com/file/d/1P4ryFUidP4NX1vnKhVF0ETu-nQ1sYBoA/view?usp=drive_link).
+
++ Step 3. [Predict TCR specificity for pHLA complexes](https://trimap-tools.readthedocs.io/en/latest/Turtorial/TCR.html) or load our pre-trained models from [Here](https://drive.google.com/file/d/1Ns0RGPDY2mFAqVaZ1oNKgxynmCfql0HH/view?usp=drive_link).
+
+To train a model for discovering disease-associated epitopes, follow these steps:
+
++ [Integrate public and disease-specific datasets to train TriMap](https://trimap-tools.readthedocs.io/en/latest/Application/Train_model.html)
+
++ [Scan peptides from disease-related proteomes](https://trimap-tools.readthedocs.io/en/latest/Application/Screen_peptides.html)
+
++ [Apply THEmap to predict novel epitopes](https://trimap-tools.readthedocs.io/en/latest/Application/Predict_epitopes.html)
 
 ## Key Features
 
